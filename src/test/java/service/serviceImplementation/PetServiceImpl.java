@@ -23,12 +23,16 @@ public class PetServiceImpl implements PetServiceInterface {
     }
 
     @Override
-    public Response getSpecificPet(String apiKey, String petId) {
-        return null;
+    public Response getSpecificPet(String apiKey, long petId) {
+        petApiService = new PetApiService();
+        String url = "v2/pet/" + petId;
+        return petApiService.get(apiKey, url);
     }
 
     @Override
-    public Response deleteSpecificPet(String apiKey, String petId) {
-        return null;
+    public Response deleteSpecificPet(String apiKey, long petId) {
+        petApiService = new PetApiService();
+        String url = "v2/pet/" + petId;
+        return petApiService.delete(apiKey, url);
     }
 }

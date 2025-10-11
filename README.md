@@ -1,0 +1,1 @@
+Exercises from https://petstore.swagger.io/#/

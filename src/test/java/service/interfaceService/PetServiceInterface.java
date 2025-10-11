@@ -10,8 +10,7 @@ public interface PetServiceInterface {
 
     Response generateApiKey(RequestPet body);
 
-    Response getSpecificPet(String apiKey, String petId);
+    Response getSpecificPet(String apiKey, long petId);
 
-    Response deleteSpecificPet(String apiKey, String petId);
-
+    Response deleteSpecificPet(String apiKey, long petId);
 }

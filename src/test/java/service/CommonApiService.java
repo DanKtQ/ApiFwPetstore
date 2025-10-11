@@ -25,10 +25,16 @@ public class CommonApiService {
         return response;
     }
 
+    public Response delete(String apiKey, String endpoint){
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header("api_key", apiKey);
+        Response response = performRequest(RequestType.REQUEST_DELETE, requestSpecification, endpoint);
+        return response;
+    }
+
     // method to instantiate the link with layer1
     private Response performRequest(String requestType, RequestSpecification requestSpecification, String endpoint) {
         return new RestClient().performRequest(requestType, requestSpecification, endpoint);
     }
-
 
 }
