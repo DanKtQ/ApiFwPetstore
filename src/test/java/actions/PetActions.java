@@ -21,16 +21,6 @@ public class PetActions {
         Response response = petServiceImpl.createPet(requestPet);
         Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK);
         ResponsePetSuccess responsePetBody = response.body().as(ResponsePetSuccess.class);
-        System.out.println("Pet id: " + responsePetBody.getId());
-        System.out.println("Pet category id: " + responsePetBody.getCategory().getId());
-        System.out.println("Pet category name: " + responsePetBody.getCategory().getName());
-        System.out.println("Pet name: " + responsePetBody.getName());
-        System.out.println("Pet photo urls: " + responsePetBody.getPhotoUrls());
-        System.out.println("Pet tags: " + responsePetBody.getTags().get(0).getId() + " "
-                + responsePetBody.getTags().get(0).getName() + ", "
-                + responsePetBody.getTags().get(1).getId() + " "
-                + responsePetBody.getTags().get(1).getName());
-        System.out.println("Pet status: " + responsePetBody.getStatus());
         Assert.assertEquals(responsePetBody.getName(), requestPet.getName());
         return responsePetBody;
     }
@@ -41,11 +31,9 @@ public class PetActions {
             Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK);
             ResponsePetGetSuccess responsePetGetSuccess = response.body().as(ResponsePetGetSuccess.class);
             Assert.assertEquals(responsePetGetSuccess.getId(), petId, "Body id must match requested petId");
-            System.out.println("GET id for SC_OK: " + responsePetGetSuccess.getId());
         } else {
             // Expect 404
             Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_NOT_FOUND);
-            System.out.println("Response body for 404:\n" + response.asPrettyString());
             ResponsePetGetFailed responsePetGetFailed = response.as(ResponsePetGetFailed.class);
             Assert.assertEquals(responsePetGetFailed.getMessage(), "Pet not found", "Unexpected error message");
             Assert.assertEquals(responsePetGetFailed.getType(), "error");

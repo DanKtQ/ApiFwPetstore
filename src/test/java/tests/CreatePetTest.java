@@ -15,7 +15,7 @@ public class CreatePetTest {
 
     @Test
     public void testMethod(){
-        System.out.println("Step 1: Create New Pet");
+        System.out.println("Step 1: CREATE New Pet");
         createPet();
         System.out.println();
 
@@ -27,13 +27,11 @@ public class CreatePetTest {
         deletePetById();
         System.out.println();
 
-        System.out.println("Step 4: GET pet by Id");
+        System.out.println("Step 4: RECHECK deleted pet");
         getPetById();
-        System.out.println();
     }
 
     public void createPet() {
-
         petActions = new PetActions();
         PropertyUtility propertyUtility = new PropertyUtility("requestData/createPetData");
         this.requestPetBody = new RequestPet(propertyUtility.getAllData());
