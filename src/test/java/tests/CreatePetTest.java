@@ -1,12 +1,15 @@
 package tests;
 
 import actions.PetActions;
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
+import hooks.Hooks;
 import objectData.requestObject.RequestPet;
 import objectData.responseObject.ResponsePetSuccess;
 import org.testng.annotations.Test;
 import propertyUtility.PropertyUtility;
 
-public class CreatePetTest {
+public class CreatePetTest extends Hooks {
 
     public long petId;
     public RequestPet requestPetBody;
@@ -17,18 +20,19 @@ public class CreatePetTest {
     public void testMethod(){
         System.out.println("Step 1: CREATE New Pet");
         createPet();
-        System.out.println();
+        ExtentUtility.attachReportLog(ReportStep.PASS_STEP, "The user creates a new pet account with success");
 
-        System.out.println("Step 2: GET pet by Id");
+        System.out.println("\nStep 2: GET pet by Id");
         getPetById();
-        System.out.println();
+        ExtentUtility.attachReportLog(ReportStep.PASS_STEP, "The user validates the creation of a new pet account with success");
 
-        System.out.println("Step 3: DELETE pet by Id");
+        System.out.println("\nStep 3: DELETE pet by Id");
         deletePetById();
-        System.out.println();
+        ExtentUtility.attachReportLog(ReportStep.PASS_STEP, "The user deletes the new created pet account with success");
 
-        System.out.println("Step 4: RECHECK deleted pet");
+        System.out.println("\nStep 4: RECHECK deleted pet");
         getPetById();
+        ExtentUtility.attachReportLog(ReportStep.PASS_STEP, "The user validates that the newly pet account was deleted with success");
     }
 
     public void createPet() {
