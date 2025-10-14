@@ -25,24 +25,43 @@ public class PetActions {
         return responsePetBody;
     }
 
-    public void getPetById(String apiKey, long petId, RequestPet requestPetBody) {
+    public void getPetById(String apiKey, long petId, int expectedStatus, RequestPet expectedPet) {
         Response response = petServiceImpl.getSpecificPet(apiKey, petId);
-        if (response.getStatusCode() == ResponseStatus.SC_OK) {
-            Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK);
-            ResponsePetGetSuccess responsePetGetSuccess = response.body().as(ResponsePetGetSuccess.class);
-            Assert.assertEquals(responsePetGetSuccess.getId(), petId, "Body id must match requested petId");
-        } else {
-            // Expect 404
-            Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_NOT_FOUND);
-            ResponsePetGetFailed responsePetGetFailed = response.as(ResponsePetGetFailed.class);
-            Assert.assertEquals(responsePetGetFailed.getMessage(), "Pet not found", "Unexpected error message");
-            Assert.assertEquals(responsePetGetFailed.getType(), "error");
-            Assert.assertEquals(responsePetGetFailed.getCode(), 1);
+        int actual = response.getStatusCode();
+        Assert.assertEquals(actual, expectedStatus, "Unexpected status for GET /pet/" + petId + ". Body:\n" + response.asString());
+
+        switch (expectedStatus) {
+            case ResponseStatus.SC_OK: { // 200
+                ResponsePetGetSuccess body = response.as(ResponsePetGetSuccess.class);
+                Assert.assertEquals(body.getId(), petId, "Body id must match requested petId");
+//                if (expectedPet != null) {
+//                    Assert.assertEquals(body.getName(), expectedPet.getName(), "Name mismatch");
+//                    Assert.assertEquals(body.getCategory().getName(), expectedPet.getCategory().getName(), "Category name mismatch");
+//                }
+                break;
+            }
+            case ResponseStatus.SC_NOT_FOUND: { // 404
+                ResponsePetGetFailed err = response.as(ResponsePetGetFailed.class);
+                Assert.assertEquals(err.getMessage(), "Pet not found", "Unexpected error message");
+                Assert.assertEquals(err.getType(), "error");
+                Assert.assertEquals(err.getCode(), 1);
+                break;
+            }
+            case ResponseStatus.SC_INVALID: { // 400
+                ResponsePetGetFailed err = response.as(ResponsePetGetFailed.class);
+                Assert.assertTrue(
+                        err.getMessage().toLowerCase().contains("invalid"),
+                        "Expected an 'invalid id supplied' style message. Body: " + response.asString()
+                );
+                break;
+            }
+            default:
+                Assert.fail("Handler missing for expected status: " + expectedStatus);
         }
     }
 
     public void deletePetById(String apiKey, long petId) {
         Response response = petServiceImpl.deleteSpecificPet(apiKey, petId);
-        Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK);
+        Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK, "DELETE should be 200");
     }
 }
