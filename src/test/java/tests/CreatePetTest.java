@@ -18,7 +18,7 @@ public class CreatePetTest extends Hooks {
     public PetActions petActions;
 
     @Test
-    public void testMethod(){
+    public void testPetMethod(){
         System.out.println("Step 1: CREATE New Pet");
         createPet();
         ExtentUtility.attachReportLog(ReportStep.INFO_STEP, "The user creates a new pet account with success");

@@ -17,12 +17,6 @@ public class PetServiceImpl implements PetServiceInterface {
     }
 
     @Override
-    public Response generateApiKey(RequestPet body) {
-        petApiService = new PetApiService();
-        return petApiService.post(body, "");
-    }
-
-    @Override
     public Response getSpecificPet(String apiKey, long petId) {
         petApiService = new PetApiService();
         String url = "v2/pet/" + petId;

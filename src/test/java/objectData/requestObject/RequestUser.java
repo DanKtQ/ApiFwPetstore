@@ -54,7 +54,7 @@ public class RequestUser implements requestPreparation {
     }
 
     private void adjustObjectVariable(){
-        username = username + System.currentTimeMillis();
+        username = username;
         id = id + System.currentTimeMillis();
     }
 

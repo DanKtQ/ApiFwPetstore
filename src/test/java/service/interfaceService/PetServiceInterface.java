@@ -8,8 +8,6 @@ public interface PetServiceInterface {
     // this interface represents the actions which we want to do with a module(Pet)
     Response createPet(RequestPet body);
 
-    Response generateApiKey(RequestPet body);
-
     Response getSpecificPet(String apiKey, long petId);
 
     Response deleteSpecificPet(String apiKey, long petId);
