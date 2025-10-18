@@ -5,7 +5,7 @@ import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
 import hooks.Hooks;
 import objectData.requestObject.RequestPet;
-import objectData.responseObject.ResponsePetSuccess;
+import objectData.responseObject.responsePet.ResponsePetSuccess;
 import org.testng.annotations.Test;
 import propertyUtility.PropertyUtility;
 import restClient.ResponseStatus;
@@ -30,6 +30,11 @@ public class CreatePetTest extends Hooks {
         System.out.println("\nStep 3: DELETE pet by Id");
         deletePetById();
         ExtentUtility.attachReportLog(ReportStep.INFO_STEP, "The user deletes the new created pet account with success");
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+        }
 
         System.out.println("\nStep 4: RECHECK deleted pet");
         petActions.getPetById(apiKey, petId, ResponseStatus.SC_NOT_FOUND, null);

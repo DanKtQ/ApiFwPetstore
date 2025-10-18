@@ -5,7 +5,7 @@ import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
 import hooks.Hooks;
 import objectData.requestObject.RequestUser;
-import objectData.responseObject.ResponseUserSuccess;
+import objectData.responseObject.responseUser.ResponseUserSuccess;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import propertyUtility.PropertyUtility;

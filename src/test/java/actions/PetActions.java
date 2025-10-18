@@ -2,9 +2,9 @@ package actions;
 
 import io.restassured.response.Response;
 import objectData.requestObject.RequestPet;
-import objectData.responseObject.ResponsePetGetFailed;
-import objectData.responseObject.ResponsePetGetSuccess;
-import objectData.responseObject.ResponsePetSuccess;
+import objectData.responseObject.responsePet.ResponsePetGetFailed;
+import objectData.responseObject.responsePet.ResponsePetGetSuccess;
+import objectData.responseObject.responsePet.ResponsePetSuccess;
 import org.testng.Assert;
 import restClient.ResponseStatus;
 import service.serviceImplementation.PetServiceImpl;

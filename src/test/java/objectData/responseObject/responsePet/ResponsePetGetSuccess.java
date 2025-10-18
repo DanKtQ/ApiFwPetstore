@@ -1,11 +1,11 @@
-package objectData.responseObject;
+package objectData.responseObject.responsePet;
 
 import objectData.pet.Category;
 import objectData.pet.TagsObject;
 
 import java.util.List;
 
-public class ResponsePetSuccess {
+public class ResponsePetGetSuccess {
 
     private long id;
 

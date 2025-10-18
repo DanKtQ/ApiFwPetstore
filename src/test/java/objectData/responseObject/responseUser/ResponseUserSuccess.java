@@ -1,4 +1,4 @@
-package objectData.responseObject;
+package objectData.responseObject.responseUser;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

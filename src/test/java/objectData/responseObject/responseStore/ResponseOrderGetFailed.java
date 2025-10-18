@@ -1,6 +1,6 @@
-package objectData.responseObject;
+package objectData.responseObject.responseStore;
 
-public class ResponseUserGetFailed {
+public class ResponseOrderGetFailed {
 
     private int code;
     private String type;

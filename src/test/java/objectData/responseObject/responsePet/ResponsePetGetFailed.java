@@ -1,4 +1,4 @@
-package objectData.responseObject;
+package objectData.responseObject.responsePet;
 
 public class ResponsePetGetFailed {
 

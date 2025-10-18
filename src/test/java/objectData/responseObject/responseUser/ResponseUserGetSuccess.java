@@ -1,4 +1,4 @@
-package objectData.responseObject;
+package objectData.responseObject.responseUser;
 
 public class ResponseUserGetSuccess {
 

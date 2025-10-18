@@ -2,9 +2,9 @@ package actions;
 
 import io.restassured.response.Response;
 import objectData.requestObject.RequestUser;
-import objectData.responseObject.ResponseUserGetFailed;
-import objectData.responseObject.ResponseUserGetSuccess;
-import objectData.responseObject.ResponseUserSuccess;
+import objectData.responseObject.responseUser.ResponseUserGetFailed;
+import objectData.responseObject.responseUser.ResponseUserGetSuccess;
+import objectData.responseObject.responseUser.ResponseUserSuccess;
 import org.testng.Assert;
 import restClient.ResponseStatus;
 import service.serviceImplementation.UserServiceImpl;
