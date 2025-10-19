@@ -2,9 +2,9 @@ package objectData.responseObject.responseStore;
 
 public class ResponseOrderSuccess {
 
-    protected long id;
+    protected int id;
 
-    private long petId;
+    private int petId;
 
     private int quantity;
 
@@ -14,19 +14,19 @@ public class ResponseOrderSuccess {
 
     private boolean complete;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getPetId() {
+    public int getPetId() {
         return petId;
     }
 
-    public void setPetId(long petId) {
+    public void setPetId(int petId) {
         this.petId = petId;
     }
 

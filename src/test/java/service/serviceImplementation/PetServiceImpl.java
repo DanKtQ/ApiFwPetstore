@@ -17,14 +17,14 @@ public class PetServiceImpl implements PetServiceInterface {
     }
 
     @Override
-    public Response getSpecificPet(String apiKey, long petId) {
+    public Response getSpecificPet(String apiKey, int petId) {
         petApiService = new PetApiService();
         String url = "v2/pet/" + petId;
         return petApiService.get(apiKey, url);
     }
 
     @Override
-    public Response deleteSpecificPet(String apiKey, long petId) {
+    public Response deleteSpecificPet(String apiKey, int petId) {
         petApiService = new PetApiService();
         String url = "v2/pet/" + petId;
         return petApiService.delete(apiKey, url);

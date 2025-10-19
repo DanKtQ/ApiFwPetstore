@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Category {
 
     @JsonProperty("id")
-    private long id;
+    private int id;
 
     @JsonProperty("name")
     private String name;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -18,7 +18,7 @@ public class Category {
         return name;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

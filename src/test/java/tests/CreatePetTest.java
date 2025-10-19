@@ -12,7 +12,7 @@ import restClient.ResponseStatus;
 
 public class CreatePetTest extends Hooks {
 
-    public long petId;
+    public int petId;
     public String apiKey = "special-key";
     public RequestPet expectedPet;
     public PetActions petActions;
@@ -30,11 +30,6 @@ public class CreatePetTest extends Hooks {
         System.out.println("\nStep 3: DELETE pet by Id");
         deletePetById();
         ExtentUtility.attachReportLog(ReportStep.INFO_STEP, "The user deletes the new created pet account with success");
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-        }
 
         System.out.println("\nStep 4: RECHECK deleted pet");
         petActions.getPetById(apiKey, petId, ResponseStatus.SC_NOT_FOUND, null);

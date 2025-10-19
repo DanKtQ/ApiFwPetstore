@@ -8,6 +8,7 @@ import objectData.pet.TagsObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class RequestPet extends ResponsePetSuccess implements requestPreparation {
 
@@ -19,13 +20,13 @@ public class RequestPet extends ResponsePetSuccess implements requestPreparation
     public void prepareObject(HashMap<String, String> testData) {
         // id
         if (testData.containsKey("id")) {
-            setId(Long.parseLong(testData.get("id")));
+            setId(Integer.parseInt(testData.get("id")));
         }
 
         // category
         Category category = new Category();
         if (testData.containsKey("category.id")) {
-            category.setId(Long.parseLong(testData.get("category.id")));
+            category.setId(Integer.parseInt(testData.get("category.id")));
         }
         if (testData.containsKey("category.name")){
             category.setName(testData.get("category.name"));
@@ -58,7 +59,7 @@ public class RequestPet extends ResponsePetSuccess implements requestPreparation
                 String[] pieces = item.split(":", 2);
                 TagsObject t = new TagsObject();
                 if (pieces.length > 0 && !pieces[0].trim().isEmpty()) {
-                    t.setId(Long.parseLong(pieces[0].trim()));
+                    t.setId(Integer.parseInt(pieces[0].trim()));
                 }
                 if (pieces.length > 1) {
                     t.setName(pieces[1].trim());
@@ -78,6 +79,8 @@ public class RequestPet extends ResponsePetSuccess implements requestPreparation
 
     public void adjustObjectVariable(){
         name = name + System.currentTimeMillis();
+        Random random = new Random();
+        id = random.nextInt(1_000_000_000); // random int between 0 and 999,999,999
     }
 
 }

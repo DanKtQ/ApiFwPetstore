@@ -2,7 +2,7 @@ package objectData.responseObject.responseUser;
 
 public class ResponseUserGetSuccess {
 
-    private long id;
+    protected int id;
     private String username;
     private String firstName;
     private String lastName;
@@ -11,11 +11,11 @@ public class ResponseUserGetSuccess {
     private String phone;
     private int userStatus;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

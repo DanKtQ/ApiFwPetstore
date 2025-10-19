@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ResponsePetGetSuccess {
 
-    private long id;
+    private int id;
 
     private Category category;
 
@@ -19,7 +19,7 @@ public class ResponsePetGetSuccess {
 
     private String status;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -43,7 +43,7 @@ public class ResponsePetGetSuccess {
         return status;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

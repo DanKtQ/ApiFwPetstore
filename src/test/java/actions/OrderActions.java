@@ -26,10 +26,10 @@ public class OrderActions {
         return  responseOrderBody;
     }
 
-    public void getOrderByPetId(String apiKey, long petId, int expectedStatus, RequestOrder expectedOrder){
-        Response response = orderServiceImpl.getSpecificOrder(apiKey, petId);
+    public void getOrderByPetId(String apiKey, int id, int expectedStatus, RequestOrder expectedOrder){
+        Response response = orderServiceImpl.getSpecificOrder(apiKey, id);
         int actual = response.getStatusCode();
-        Assert.assertEquals(actual, expectedStatus, "Unexpected status for GET /order/" + petId + ". Body:\n" + response.asString());
+        Assert.assertEquals(actual, expectedStatus, "Unexpected status for GET /order/" + id + ". Body:\n" + response.asString());
 
         switch (expectedStatus) {
             case ResponseStatus.SC_OK: { // 200
@@ -62,7 +62,7 @@ public class OrderActions {
         }
     }
 
-    public void deleteOrderById(String apiKey, long id) {
+    public void deleteOrderById(String apiKey, int id) {
         Response response = orderServiceImpl.deletePurchasedOrder(apiKey, id);
         Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK, "DELETE should be 200");
     }

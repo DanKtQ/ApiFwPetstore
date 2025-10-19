@@ -25,7 +25,7 @@ public class PetActions {
         return responsePetBody;
     }
 
-    public void getPetById(String apiKey, long petId, int expectedStatus, RequestPet expectedPet) {
+    public void getPetById(String apiKey, int petId, int expectedStatus, RequestPet expectedPet) {
         Response response = petServiceImpl.getSpecificPet(apiKey, petId);
         int actual = response.getStatusCode();
         Assert.assertEquals(actual, expectedStatus, "Unexpected status for GET /pet/" + petId + ". Body:\n" + response.asString());
@@ -60,7 +60,7 @@ public class PetActions {
         }
     }
 
-    public void deletePetById(String apiKey, long petId) {
+    public void deletePetById(String apiKey, int petId) {
         Response response = petServiceImpl.deleteSpecificPet(apiKey, petId);
         Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK, "DELETE should be 200");
     }

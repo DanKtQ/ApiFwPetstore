@@ -17,14 +17,14 @@ public class OrderServiceImpl implements OrderServiceInterface {
     }
 
     @Override
-    public Response getSpecificOrder(String apiKey,long petId) {
+    public Response getSpecificOrder(String apiKey,int id) {
         orderApiService = new OrderApiService();
-        String url = "v2/store/order/" + petId;
+        String url = "v2/store/order/" + id;
         return orderApiService.get(apiKey, url);
     }
 
     @Override
-    public Response deletePurchasedOrder(String apiKey, long id) {
+    public Response deletePurchasedOrder(String apiKey, int id) {
         orderApiService = new OrderApiService();
         String url = "v2/store/order/" + id;
         return orderApiService.delete(apiKey, url);

@@ -4,6 +4,7 @@ import objectData.requestPreparation;
 import objectData.responseObject.responseStore.ResponseOrderSuccess;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class RequestOrder extends ResponseOrderSuccess implements requestPreparation {
 
@@ -39,7 +40,8 @@ public class RequestOrder extends ResponseOrderSuccess implements requestPrepara
     }
 
     private void adjustObjectVariable(){
-        id = id + System.currentTimeMillis();
+        Random random = new Random();
+        id = random.nextInt(1_000_000_000); // random int between 0 and 999,999,999
     }
 
 }

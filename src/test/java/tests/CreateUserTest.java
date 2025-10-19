@@ -13,7 +13,7 @@ import restClient.ResponseStatus;
 
 public class CreateUserTest extends Hooks {
 
-    public long userId;
+    public int userId;
     public String username;
     public String apiKey = "special-key";
     public RequestUser expectedUser;

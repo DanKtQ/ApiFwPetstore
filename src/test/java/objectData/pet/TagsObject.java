@@ -3,12 +3,12 @@ package objectData.pet;
 public class TagsObject {
 
 //    @JsonProperty("id")
-    private long id;
+    private int id;
 
 //    @JsonProperty("name")
     private String name;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -16,7 +16,7 @@ public class TagsObject {
         return name;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

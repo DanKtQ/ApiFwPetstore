@@ -12,8 +12,8 @@ import restClient.ResponseStatus;
 
 public class CreateOrderTest extends Hooks {
 
-    public long id;
-    public long petId;
+    public int id;
+    public int petId;
     public String apiKey = "special-key";
     public RequestOrder expectedOrder;
     public OrderActions orderActions;
@@ -25,7 +25,7 @@ public class CreateOrderTest extends Hooks {
         ExtentUtility.attachReportLog(ReportStep.INFO_STEP, "A new order is created with success");
 
         System.out.println("\nStep 2: GET Order by pet ID");
-        orderActions.getOrderByPetId(apiKey, petId, ResponseStatus.SC_OK, expectedOrder);
+        orderActions.getOrderByPetId(apiKey, id, ResponseStatus.SC_OK, expectedOrder);
         ExtentUtility.attachReportLog(ReportStep.INFO_STEP, "The user validates the creation of a new order with success");
 
         System.out.println("\nStep 3: DELETE order by order id");
@@ -47,6 +47,6 @@ public class CreateOrderTest extends Hooks {
     }
 
     public void deleteOrderById(){
-        orderActions.deleteOrderById(apiKey, id);
+        orderActions.deleteOrderById(apiKey, petId);
     }
 }
