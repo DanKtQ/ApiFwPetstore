@@ -31,9 +31,25 @@ public class CommonApiService {
         return response;
     }
 
+    public Response getOrder(String endpoint){
+        RequestSpecification requestSpecification = RestAssured.given();
+        ServiceHelper.requestLogs(requestSpecification, endpoint, RequestType.REQUEST_GET);
+        Response response = performRequest(RequestType.REQUEST_GET, requestSpecification, endpoint);
+        ServiceHelper.responseLogs(response);
+        return response;
+    }
+
     public Response delete(String apiKey, String endpoint){
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.header("api_key", apiKey);
+        ServiceHelper.requestLogs(requestSpecification, endpoint, RequestType.REQUEST_DELETE);
+        Response response = performRequest(RequestType.REQUEST_DELETE, requestSpecification, endpoint);
+        ServiceHelper.responseLogs(response);
+        return response;
+    }
+
+    public Response deleteOrder(String endpoint){
+        RequestSpecification requestSpecification = RestAssured.given();
         ServiceHelper.requestLogs(requestSpecification, endpoint, RequestType.REQUEST_DELETE);
         Response response = performRequest(RequestType.REQUEST_DELETE, requestSpecification, endpoint);
         ServiceHelper.responseLogs(response);

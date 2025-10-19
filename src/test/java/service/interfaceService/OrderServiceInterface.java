@@ -9,7 +9,7 @@ public interface OrderServiceInterface {
 
     Response createOrder(RequestOrder body);
 
-    Response getSpecificOrder(String apiKey, int petId);
+    Response getSpecificOrder(int petId);
 
-    Response deletePurchasedOrder(String apiKey, int id);
+    Response deletePurchasedOrder(int id);
 }

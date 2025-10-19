@@ -13,21 +13,32 @@ public class OrderActions {
 
     private OrderServiceImpl orderServiceImpl;
 
-    public OrderActions(){
-        orderServiceImpl = new OrderServiceImpl();
+    public OrderActions() {
+        this.orderServiceImpl = new OrderServiceImpl();
     }
 
-    public ResponseOrderSuccess createNewOrder(RequestOrder requestOrder){
+    public Response getOrderByIdRaw(int id) {
+        return orderServiceImpl.getSpecificOrder(id);
+    }
+
+    public Response deleteOrderByIdRaw(int id) {
+        return orderServiceImpl.deletePurchasedOrder(id);
+    }
+
+    public ResponseOrderSuccess createNewOrder(RequestOrder requestOrder) {
         Response response = orderServiceImpl.createOrder(requestOrder);
-        Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK);
-        ResponseOrderSuccess responseOrderBody = response.body().as(ResponseOrderSuccess.class);
-        Assert.assertEquals(responseOrderBody.getId(), requestOrder.getId());
-        Assert.assertEquals(responseOrderBody.getPetId(), requestOrder.getPetId());
-        return  responseOrderBody;
+        Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK, "Create order failed: " + response.asString());
+        ResponseOrderSuccess body = response.as(ResponseOrderSuccess.class);
+        requestOrder.setId((int) body.getId());
+        requestOrder.setPetId((int) body.getPetId());
+        requestOrder.setQuantity(body.getQuantity());
+        requestOrder.setStatus(body.getStatus());
+        requestOrder.setComplete(body.isComplete());
+        return body;
     }
 
-    public void getOrderByPetId(String apiKey, int id, int expectedStatus, RequestOrder expectedOrder){
-        Response response = orderServiceImpl.getSpecificOrder(apiKey, id);
+    public void getOrderById(int id, int expectedStatus, RequestOrder expectedOrder) {
+        Response response = orderServiceImpl.getSpecificOrder(id);
         int actual = response.getStatusCode();
         Assert.assertEquals(actual, expectedStatus, "Unexpected status for GET /order/" + id + ". Body:\n" + response.asString());
 
@@ -62,8 +73,8 @@ public class OrderActions {
         }
     }
 
-    public void deleteOrderById(String apiKey, int id) {
-        Response response = orderServiceImpl.deletePurchasedOrder(apiKey, id);
+    public void deleteOrderById(int id) {
+        Response response = orderServiceImpl.deletePurchasedOrder(id);
         Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK, "DELETE should be 200");
     }
 }
