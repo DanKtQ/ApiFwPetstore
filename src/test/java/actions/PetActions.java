@@ -21,6 +21,7 @@ public class PetActions {
         Response response = petServiceImpl.createPet(requestPet);
         Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK);
         ResponsePetSuccess responsePetBody = response.body().as(ResponsePetSuccess.class);
+        responsePetBody.validateNotNullFields();
         Assert.assertEquals(responsePetBody.getName(), requestPet.getName());
         return responsePetBody;
     }
@@ -33,6 +34,7 @@ public class PetActions {
         switch (expectedStatus) {
             case ResponseStatus.SC_OK: { // 200
                 ResponsePetGetSuccess body = response.as(ResponsePetGetSuccess.class);
+                body.validateNotNullFields();
                 Assert.assertEquals(body.getId(), petId, "Body id must match requested petId");
 //                if (expectedPet != null) {
 //                    Assert.assertEquals(body.getName(), expectedPet.getName(), "Name mismatch");

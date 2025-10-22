@@ -1,9 +1,16 @@
 package objectData.responseObject.responseUser;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import objectData.ResponseNotNull;
+import org.testng.Assert;
 
-public class ResponseUserSuccess {
+public class ResponseUserSuccess implements ResponseNotNull {
 
+    @Override
+    public void validateNotNullFields() {
+        Assert.assertNotNull(code);
+        Assert.assertNotNull(type);
+        Assert.assertNotNull(message);
+    }
     private int code;
 
     private String type;

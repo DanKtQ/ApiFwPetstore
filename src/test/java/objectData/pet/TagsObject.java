@@ -1,7 +1,15 @@
 package objectData.pet;
 
-public class TagsObject {
+import objectData.ResponseNotNull;
+import org.testng.Assert;
 
+public class TagsObject implements ResponseNotNull {
+
+    @Override
+    public void validateNotNullFields() {
+        Assert.assertNotNull(id);
+        Assert.assertNotNull(name);
+    }
 //    @JsonProperty("id")
     private int id;
 

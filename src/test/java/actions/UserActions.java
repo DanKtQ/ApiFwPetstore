@@ -21,6 +21,7 @@ public class UserActions {
         Response response = userServiceImpl.createUser(requestUser);
         Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK);
         ResponseUserSuccess responseUserBody = response.body().as(ResponseUserSuccess.class);
+        responseUserBody.validateNotNullFields();
         Assert.assertEquals(responseUserBody.getCode(), 200);
         Assert.assertEquals(responseUserBody.getMessage(), String.valueOf(requestUser.getId()));
         return responseUserBody;
@@ -34,6 +35,7 @@ public class UserActions {
         switch (expectedStatus) {
             case ResponseStatus.SC_OK: { // 200
                 ResponseUserGetSuccess body = response.as(ResponseUserGetSuccess.class);
+                body.validateNotNullFields();
                 Assert.assertEquals(body.getUsername(), expectedUser.getUsername(), "Body username must match requested username");
                 Assert.assertEquals(body.getFirstName(), expectedUser.getFirstName(), "Body firstname must match requested firstname");
                 Assert.assertEquals(body.getLastName(), expectedUser.getLastName(), "Body lastname must match requested lastname");

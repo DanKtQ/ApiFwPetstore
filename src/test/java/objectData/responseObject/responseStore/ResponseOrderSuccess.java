@@ -1,6 +1,19 @@
 package objectData.responseObject.responseStore;
 
-public class ResponseOrderSuccess {
+import objectData.ResponseNotNull;
+import org.testng.Assert;
+
+public class ResponseOrderSuccess implements ResponseNotNull {
+
+    @Override
+    public void validateNotNullFields() {
+        Assert.assertNotNull(id);
+        Assert.assertNotNull(petId);
+        Assert.assertNotNull(quantity);
+        Assert.assertNotNull(shipDate);
+        Assert.assertNotNull(status);
+        Assert.assertNotNull(complete);
+    }
 
     protected int id;
 

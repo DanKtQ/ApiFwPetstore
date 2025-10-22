@@ -1,12 +1,25 @@
 package objectData.responseObject.responsePet;
 
+import objectData.ResponseNotNull;
 import objectData.pet.Category;
 import objectData.pet.TagsObject;
+import org.testng.Assert;
 
 import java.util.List;
 
-public class ResponsePetGetSuccess {
+public class ResponsePetGetSuccess implements ResponseNotNull {
 
+    @Override
+    public void validateNotNullFields() {
+        Assert.assertNotNull(id);
+        Assert.assertNotNull(category);
+        Assert.assertNotNull(name);
+        Assert.assertNotNull(photoUrls);
+        Assert.assertNotNull(status);
+        for(TagsObject tagsObject:tags){
+            tagsObject.validateNotNullFields();
+        }
+    }
     private int id;
 
     private Category category;

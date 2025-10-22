@@ -1,7 +1,21 @@
 package objectData.responseObject.responseUser;
 
-public class ResponseUserGetSuccess {
+import objectData.ResponseNotNull;
+import org.testng.Assert;
 
+public class ResponseUserGetSuccess implements ResponseNotNull {
+
+    @Override
+    public void validateNotNullFields() {
+        Assert.assertNotNull(id);
+        Assert.assertNotNull(username);
+        Assert.assertNotNull(firstName);
+        Assert.assertNotNull(lastName);
+        Assert.assertNotNull(email);
+        Assert.assertNotNull(password);
+        Assert.assertNotNull(phone);
+        Assert.assertNotNull(userStatus);
+    }
     protected int id;
     private String username;
     private String firstName;

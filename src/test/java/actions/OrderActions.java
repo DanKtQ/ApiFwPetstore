@@ -29,6 +29,7 @@ public class OrderActions {
         Response response = orderServiceImpl.createOrder(requestOrder);
         Assert.assertEquals(response.getStatusCode(), ResponseStatus.SC_OK, "Create order failed: " + response.asString());
         ResponseOrderSuccess body = response.as(ResponseOrderSuccess.class);
+        body.validateNotNullFields();
         requestOrder.setId((int) body.getId());
         requestOrder.setPetId((int) body.getPetId());
         requestOrder.setQuantity(body.getQuantity());
@@ -45,6 +46,7 @@ public class OrderActions {
         switch (expectedStatus) {
             case ResponseStatus.SC_OK: { // 200
                 ResponseOrderGetSuccess body = response.as(ResponseOrderGetSuccess.class);
+                body.validateNotNullFields();
                 Assert.assertEquals(body.getId(), expectedOrder.getId(), "Body id must match requested id");
                 Assert.assertEquals(body.getPetId(), expectedOrder.getPetId(), "Body petId must match requested petId");
                 Assert.assertEquals(body.getQuantity(), expectedOrder.getQuantity(), "Body quantity must match requested quantity");
