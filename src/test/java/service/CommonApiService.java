@@ -6,8 +6,6 @@ import io.restassured.specification.RequestSpecification;
 import restClient.RequestType;
 import restClient.RestClient;
 
-import java.security.Provider;
-
 public class CommonApiService {
 
     // layer 2: defining the actions for user configs(layer 1)
@@ -52,6 +50,16 @@ public class CommonApiService {
         RequestSpecification requestSpecification = RestAssured.given();
         ServiceHelper.requestLogs(requestSpecification, endpoint, RequestType.REQUEST_DELETE);
         Response response = performRequest(RequestType.REQUEST_DELETE, requestSpecification, endpoint);
+        ServiceHelper.responseLogs(response);
+        return response;
+    }
+
+    public Response put(Object body, String endpoint){
+        RequestSpecification requestSpecification = RestAssured.given();
+        // for this kind of method we will do a PUT with a body
+        requestSpecification.body(body);
+        ServiceHelper.requestLogs(requestSpecification, endpoint, RequestType.REQUEST_PUT);
+        Response response = performRequest(RequestType.REQUEST_PUT, requestSpecification, endpoint);
         ServiceHelper.responseLogs(response);
         return response;
     }

@@ -1,6 +1,7 @@
 package service.interfaceService;
 
 import io.restassured.response.Response;
+import objectData.requestObject.RequestUpdateUser;
 import objectData.requestObject.RequestUser;
 
 public interface UserServiceInterface {
@@ -11,5 +12,7 @@ public interface UserServiceInterface {
     Response getUserByUsername(String apiKey, String username);
 
     Response deleteUserByUsername(String apiKey, String username);
+
+    Response updateUserByUsername(RequestUpdateUser body, String username);
 
 }

@@ -1,9 +1,9 @@
 package objectData.responseObject.responseUser;
 
-import objectData.ResponseNotNull;
+import objectData.responseObject.ResponseNotNull;
 import org.testng.Assert;
 
-public class ResponseUserSuccess implements ResponseNotNull {
+public class ResponseUserCreateSuccess implements ResponseNotNull {
 
     @Override
     public void validateNotNullFields() {

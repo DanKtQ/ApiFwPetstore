@@ -5,9 +5,9 @@ import objectData.responseObject.responseUser.ResponseUserGetSuccess;
 import java.util.HashMap;
 import java.util.Random;
 
-public class RequestUser extends ResponseUserGetSuccess implements requestPreparation {
+public class RequestUpdateUser extends ResponseUserGetSuccess implements requestPreparation {
 
-    public RequestUser(HashMap<String, String> testData) {
+    public RequestUpdateUser(HashMap<String, String> testData) {
         prepareObject(testData);
     }
 
@@ -41,12 +41,6 @@ public class RequestUser extends ResponseUserGetSuccess implements requestPrepar
                     break;
             }
         }
-        adjustObjectVariable();
-    }
-
-    private void adjustObjectVariable() {
-        Random random = new Random();
-        id = random.nextInt(1_000_000_000); // random int between 0 and 999,999,999
     }
 
 }

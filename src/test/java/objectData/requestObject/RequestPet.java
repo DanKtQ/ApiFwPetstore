@@ -1,7 +1,6 @@
 package objectData.requestObject;
 
 import objectData.pet.Category;
-import objectData.requestPreparation;
 import objectData.responseObject.responsePet.ResponsePetSuccess;
 import objectData.pet.TagsObject;
 

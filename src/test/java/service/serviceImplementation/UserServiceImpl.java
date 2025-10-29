@@ -1,6 +1,7 @@
 package service.serviceImplementation;
 
 import io.restassured.response.Response;
+import objectData.requestObject.RequestUpdateUser;
 import objectData.requestObject.RequestUser;
 import service.apiService.UserApiService;
 import service.interfaceService.UserServiceInterface;
@@ -29,5 +30,12 @@ public class UserServiceImpl implements UserServiceInterface {
         userApiService = new UserApiService();
         String url = "v2/user/" + username;
         return userApiService.delete(apiKey, url);
+    }
+
+    @Override
+    public Response updateUserByUsername(RequestUpdateUser body, String username) {
+        userApiService = new UserApiService();
+        String url = "v2/user/" + username;
+        return userApiService.put(body, url);
     }
 }

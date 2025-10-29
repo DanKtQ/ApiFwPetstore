@@ -1,6 +1,6 @@
 package objectData.responseObject.responseStore;
 
-import objectData.ResponseNotNull;
+import objectData.responseObject.ResponseNotNull;
 import org.testng.Assert;
 
 public class ResponseOrderSuccess implements ResponseNotNull {

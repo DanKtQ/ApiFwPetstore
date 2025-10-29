@@ -1,6 +1,5 @@
 package objectData.requestObject;
 
-import objectData.requestPreparation;
 import objectData.responseObject.responseStore.ResponseOrderSuccess;
 
 import java.util.HashMap;

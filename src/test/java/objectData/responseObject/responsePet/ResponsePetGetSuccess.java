@@ -1,6 +1,6 @@
 package objectData.responseObject.responsePet;
 
-import objectData.ResponseNotNull;
+import objectData.responseObject.ResponseNotNull;
 import objectData.pet.Category;
 import objectData.pet.TagsObject;
 import org.testng.Assert;

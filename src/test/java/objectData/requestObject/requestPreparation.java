@@ -1,4 +1,4 @@
-package objectData;
+package objectData.requestObject;
 
 import java.util.HashMap;
 

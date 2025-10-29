@@ -1,6 +1,6 @@
 package objectData.responseObject.responseUser;
 
-import objectData.ResponseNotNull;
+import objectData.responseObject.ResponseNotNull;
 import org.testng.Assert;
 
 public class ResponseUserGetSuccess implements ResponseNotNull {

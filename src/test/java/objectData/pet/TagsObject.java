@@ -1,6 +1,6 @@
 package objectData.pet;
 
-import objectData.ResponseNotNull;
+import objectData.responseObject.ResponseNotNull;
 import org.testng.Assert;
 
 public class TagsObject implements ResponseNotNull {
